@@ -1,3 +1,5 @@
+import br.com.alura.screenmatch.modelos.Filme;
+
 import java.util.Scanner;
 
 public class Main {
@@ -7,9 +9,9 @@ public class Main {
 
         Filme meuFilme = new Filme();
 
-        meuFilme.nome =  "Shaolin Soccer";
-        meuFilme.anoDeLancamento = 2001;
-        meuFilme.duracaoEmMinutos = 113;
+        meuFilme.setNome("Shaolin Soccer");
+        meuFilme.setAnoDeLancamento(2001);
+        meuFilme.setDuracaoEmMinutos(113);
 
         meuFilme.exibirFichaTecnica();
 
@@ -21,6 +23,6 @@ public class Main {
             continuar = leitura.nextLine().toUpperCase().charAt(0);
         } while (continuar != 'N');
 
-        System.out.println("A média de notas para o filme " + meuFilme.nome + " foi de: " + meuFilme.media());
+        System.out.println("A média de notas para o filme " + meuFilme.getNome() + " foi de: " + meuFilme.media());
     }
 }
