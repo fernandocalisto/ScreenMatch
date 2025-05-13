@@ -1,9 +1,11 @@
 import br.com.alura.screenmatch.modelos.Filme;
+import br.com.alura.screenmatch.modelos.Serie;
+import br.com.alura.screenmatch.calculos.CalculadoraDeTempo;
 
 import java.util.Scanner;
 
 public class Main {
-    public static void main (String[] args){
+    public static void main(String[] args) {
 
         Scanner leitura = new Scanner(System.in);
 
@@ -12,17 +14,34 @@ public class Main {
         meuFilme.setNome("Shaolin Soccer");
         meuFilme.setAnoDeLancamento(2001);
         meuFilme.setDuracaoEmMinutos(113);
+        meuFilme.setDiretor("Stephen Chow");
 
         meuFilme.exibirFichaTecnica();
 
-        System.out.println("Hora de Avaliar!");
-        char continuar;
-        do {
-            meuFilme.avaliar(leitura);
-            System.out.print("Deseja continuar lançando notas? (S para sim e N para não): ");
-            continuar = leitura.nextLine().toUpperCase().charAt(0);
-        } while (continuar != 'N');
+        Filme outroFilme = new Filme();
 
-        System.out.println("A média de notas para o filme " + meuFilme.getNome() + " foi de: " + meuFilme.media());
+        outroFilme.setNome("Kung-fu Hustle");
+        outroFilme.setAnoDeLancamento(2004);
+        outroFilme.setDuracaoEmMinutos(99);
+        outroFilme.setDiretor("Stephen Chow");
+
+        outroFilme.exibirFichaTecnica();
+
+        Serie minhaSerie = new Serie();
+
+        minhaSerie.setNome("Cobra Kai");
+        minhaSerie.setAnoDeLancamento(2018);
+        minhaSerie.setEpisodiosPorTemporada(12);
+        minhaSerie.setTemporadas(6);
+        minhaSerie.setMinutosPorEpisodio(50);
+        minhaSerie.isAtiva(true);
+
+        minhaSerie.exibirFichaTecnica();
+
+        CalculadoraDeTempo calculadora = new CalculadoraDeTempo();
+        calculadora.inclui(meuFilme);
+        calculadora.inclui(outroFilme);
+        calculadora.inclui(minhaSerie);
+        System.out.println(calculadora.getTempoTotal());
     }
 }

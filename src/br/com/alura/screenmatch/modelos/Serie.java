@@ -14,7 +14,7 @@ public class Serie extends Titulo{
         this.temporadas = temporadas;
     }
 
-    public boolean isAtiva() {
+    public boolean isAtiva(boolean b) {
         return ativa;
     }
 
@@ -38,5 +38,18 @@ public class Serie extends Titulo{
         this.minutosPorEpisodio = minutosPorEpisodio;
     }
 
+    @Override
+    public int getDuracaoEmMinutos() {
+        return temporadas * episodiosPorTemporada * minutosPorEpisodio;
+    }
 
+    @Override
+    public void exibirFichaTecnica() {
+        super.exibirFichaTecnica();
+        System.out.printf("""
+                Temporadas: %d
+                Episódios por Temporada: %d
+                Duração de Episódio: %d
+                """,getTemporadas(),getEpisodiosPorTemporada(),getMinutosPorEpisodio());
+    }
 }

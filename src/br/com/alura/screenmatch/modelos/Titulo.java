@@ -12,10 +12,10 @@ public class Titulo {
 
     public void exibirFichaTecnica () {
         System.out.printf("""
-                nome: %s
-                ano de lançamento: %d
-                duração (em minutos): %d
-                """, nome,anoDeLancamento,duracaoEmMinutos);
+                Nome: %s
+                Ano de lançamento: %d
+                Duração (em minutos): %d
+                """, getNome(),getAnoDeLancamento(),getDuracaoEmMinutos());
     }
 
     public void avaliar (Scanner leitura) {
