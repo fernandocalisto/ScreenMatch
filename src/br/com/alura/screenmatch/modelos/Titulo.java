@@ -10,28 +10,27 @@ public class Titulo {
     private double avaliacao;
     private int totalDeAvaliacoes;
 
-    public void exibirFichaTecnica () {
+    public void exibirFichaTecnica() {
         System.out.printf("""
                 Nome: %s
                 Ano de lançamento: %d
                 Duração (em minutos): %d
-                """, getNome(),getAnoDeLancamento(),getDuracaoEmMinutos());
+                """, getNome(), getAnoDeLancamento(), getDuracaoEmMinutos());
     }
 
-    public void avaliar (Scanner leitura) {
+    public void avaliar(Scanner leitura) {
         System.out.print("Insira a sua nota 0 a 10: ");
         int nota = leitura.nextInt();
         leitura.nextLine();
-        if (nota < 0 || nota > 10){
+        if (nota < 0 || nota > 10) {
             System.out.println("Nota inválida!");
-        }
-        else{
+        } else {
             avaliacao += nota;
             totalDeAvaliacoes++;
         }
     }
 
-    public double media () {
+    public double media() {
         double media = avaliacao / totalDeAvaliacoes;
         return Math.round(media * 100) / 100;
     }

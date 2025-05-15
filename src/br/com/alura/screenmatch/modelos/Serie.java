@@ -1,6 +1,6 @@
 package br.com.alura.screenmatch.modelos;
 
-public class Serie extends Titulo{
+public class Serie extends Titulo {
     private int temporadas;
     private boolean ativa;
     private int episodiosPorTemporada;
@@ -50,6 +50,6 @@ public class Serie extends Titulo{
                 Temporadas: %d
                 Episódios por Temporada: %d
                 Duração de Episódio: %d
-                """,getTemporadas(),getEpisodiosPorTemporada(),getMinutosPorEpisodio());
+                """, getTemporadas(), getEpisodiosPorTemporada(), getMinutosPorEpisodio());
     }
 }

@@ -18,7 +18,7 @@ public class Filme extends Titulo implements Classificavel {
     @Override
     public void exibirFichaTecnica() {
         super.exibirFichaTecnica();
-        System.out.printf("Diretor: %s%n",getDiretor());
+        System.out.printf("Diretor: %s%n", getDiretor());
     }
 
     @Override
