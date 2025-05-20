@@ -4,6 +4,7 @@ import br.com.alura.screenmatch.modelos.Filme;
 import br.com.alura.screenmatch.modelos.Serie;
 import br.com.alura.screenmatch.calculos.CalculadoraDeTempo;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Main {
@@ -57,5 +58,22 @@ public class Main {
         episodio.setTotalVisualizacoes(10000);
 
         filtro.filtra(episodio);
+
+
+        Filme maisUmFilme = new Filme();
+
+        maisUmFilme.setNome("Rocky Balboa");
+        maisUmFilme.setDiretor("Sylvester Stallone");
+        maisUmFilme.setAnoDeLancamento(2006);
+        maisUmFilme.setDuracaoEmMinutos(102);
+
+        ArrayList<Filme> ListaDeFilmes = new ArrayList<>();
+        ListaDeFilmes.add(meuFilme);
+        ListaDeFilmes.add(outroFilme);
+        ListaDeFilmes.add(maisUmFilme);
+
+        System.out.println("Tamanho da lista: " + ListaDeFilmes.size());
+        System.out.println("Primeiro Filme: " + ListaDeFilmes.get(0).getNome());
+        System.out.println(ListaDeFilmes);
     }
 }
