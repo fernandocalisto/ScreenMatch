@@ -83,5 +83,8 @@ public class Titulo {
         this.totalDeAvaliacoes = totalDeAvaliacoes;
     }
 
-
+    public Titulo(String nome, int anoDeLancamento) {
+        this.nome = nome;
+        this.anoDeLancamento = anoDeLancamento;
+    }
 }

@@ -1,8 +1,11 @@
+package br.com.alura.screenmatch.Principal;
+
 import br.com.alura.screenmatch.calculos.FiltroRecomendacao;
 import br.com.alura.screenmatch.modelos.Episodio;
 import br.com.alura.screenmatch.modelos.Filme;
 import br.com.alura.screenmatch.modelos.Serie;
 import br.com.alura.screenmatch.calculos.CalculadoraDeTempo;
+import br.com.alura.screenmatch.modelos.Titulo;
 
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -12,32 +15,26 @@ public class Main {
 
         Scanner leitura = new Scanner(System.in);
 
-        Filme meuFilme = new Filme();
-
-        meuFilme.setNome("Shaolin Soccer");
-        meuFilme.setAnoDeLancamento(2001);
+        Filme meuFilme = new Filme("Shaolin Soccer", 2001);
         meuFilme.setDuracaoEmMinutos(113);
         meuFilme.setDiretor("Stephen Chow");
+        meuFilme.setAvaliacao(5);
 
         meuFilme.exibirFichaTecnica();
 
-        Filme outroFilme = new Filme();
-
-        outroFilme.setNome("Kung-fu Hustle");
-        outroFilme.setAnoDeLancamento(2004);
+        Filme outroFilme = new Filme("Kung-fu Hustle", 2004);
         outroFilme.setDuracaoEmMinutos(99);
         outroFilme.setDiretor("Stephen Chow");
+        outroFilme.setAvaliacao(4);
 
         outroFilme.exibirFichaTecnica();
 
-        Serie minhaSerie = new Serie();
-
-        minhaSerie.setNome("Cobra Kai");
-        minhaSerie.setAnoDeLancamento(2018);
+        Serie minhaSerie = new Serie("Cobra Kai", 2018);
         minhaSerie.setEpisodiosPorTemporada(12);
         minhaSerie.setTemporadas(6);
         minhaSerie.setMinutosPorEpisodio(50);
         minhaSerie.isAtiva(true);
+        minhaSerie.setAvaliacao(4);
 
         minhaSerie.exibirFichaTecnica();
 
@@ -60,20 +57,22 @@ public class Main {
         filtro.filtra(episodio);
 
 
-        Filme maisUmFilme = new Filme();
-
-        maisUmFilme.setNome("Rocky Balboa");
-        maisUmFilme.setDiretor("Sylvester Stallone");
-        maisUmFilme.setAnoDeLancamento(2006);
+        Filme maisUmFilme = new Filme("Rocky Balboa", 2006);
         maisUmFilme.setDuracaoEmMinutos(102);
+        maisUmFilme.setDiretor("Sylvester Stallone");
+        maisUmFilme.setAvaliacao(3);
 
-        ArrayList<Filme> ListaDeFilmes = new ArrayList<>();
-        ListaDeFilmes.add(meuFilme);
-        ListaDeFilmes.add(outroFilme);
-        ListaDeFilmes.add(maisUmFilme);
+        ArrayList<Titulo> lista = new ArrayList<>();
+        lista.add(meuFilme);
+        lista.add(outroFilme);
+        lista.add(maisUmFilme);
+        lista.add(minhaSerie);
 
-        System.out.println("Tamanho da lista: " + ListaDeFilmes.size());
-        System.out.println("Primeiro Filme: " + ListaDeFilmes.get(0).getNome());
-        System.out.println(ListaDeFilmes);
+        for (Titulo item : lista) {
+            System.out.println(item);
+            if (item instanceof Filme filme)
+                System.out.println(item.getAvaliacao());
+        }
+
     }
 }
