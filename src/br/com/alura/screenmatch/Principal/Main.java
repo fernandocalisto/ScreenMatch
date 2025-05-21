@@ -8,6 +8,8 @@ import br.com.alura.screenmatch.calculos.CalculadoraDeTempo;
 import br.com.alura.screenmatch.modelos.Titulo;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.Scanner;
 
 public class Main {
@@ -74,5 +76,18 @@ public class Main {
                 System.out.println(item.getAvaliacao());
         }
 
+        List<String> buscaPorArtista = new LinkedList<>();
+        buscaPorArtista.add("Belchior");
+        buscaPorArtista.add("Adele");
+        buscaPorArtista.add("Charlie Brown Jr");
+
+        System.out.println(buscaPorArtista);
+        Collections.sort(buscaPorArtista);
+        System.out.println(buscaPorArtista);
+        Collections.sort(lista);
+        System.out.println(lista);
+        lista.sort(Comparator.comparing(Titulo::getAnoDeLancamento));
+        System.out.println("Ordenado por ano!");
+        System.out.println(lista);
     }
 }
