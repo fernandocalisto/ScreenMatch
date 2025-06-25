@@ -1,5 +1,6 @@
 package br.com.alura.screenmatch.Principal;
 
+import br.com.alura.screenmatch.excecao.ErroDeConversaoDeAnoException;
 import br.com.alura.screenmatch.modelos.Titulo;
 import br.com.alura.screenmatch.modelos.TituloOmdb;
 import com.google.gson.FieldNamingPolicy;
@@ -18,26 +19,33 @@ public class PrincipalComBusca {
 
         Scanner leitura = new Scanner(System.in);
         System.out.println("Digite um Filme para a Busca: ");
-        String busca = leitura.nextLine();
+        String busca = leitura.nextLine().replaceAll(" ", "+");
 
         String endereco = "http://www.omdbapi.com/?t=" + busca + "&apikey=fd1f888c";
 
-        HttpClient client = HttpClient.newHttpClient();
-        HttpRequest request = HttpRequest.newBuilder()
-                .uri(URI.create(endereco))
-                .build();
-        HttpResponse<String> response = client
-                .send(request, HttpResponse.BodyHandlers.ofString());
-
-        String json = response.body();
-
-        Gson gson = new GsonBuilder().setFieldNamingPolicy(FieldNamingPolicy.UPPER_CAMEL_CASE).create();
-        TituloOmdb meuTituloOmdb = gson.fromJson(json, TituloOmdb.class);
         try {
+
+            HttpClient client = HttpClient.newHttpClient();
+            HttpRequest request = HttpRequest.newBuilder()
+                    .uri(URI.create(endereco))
+                    .build();
+            HttpResponse<String> response = client
+                    .send(request, HttpResponse.BodyHandlers.ofString());
+
+            String json = response.body();
+
+            Gson gson = new GsonBuilder().setFieldNamingPolicy(FieldNamingPolicy.UPPER_CAMEL_CASE).create();
+            TituloOmdb meuTituloOmdb = gson.fromJson(json, TituloOmdb.class);
+
             Titulo meuTitulo = new Titulo(meuTituloOmdb);
             System.out.println(meuTitulo);
         } catch (NumberFormatException e) {
             System.out.println("Ocorreu um erro!");
+            System.out.println(e.getMessage());
+        } catch (IllegalArgumentException e) {
+            System.out.println("Erro no argumento de busca!");
+            System.out.println(e.getMessage());
+        } catch (ErroDeConversaoDeAnoException e) {
             System.out.println(e.getMessage());
         }
 
